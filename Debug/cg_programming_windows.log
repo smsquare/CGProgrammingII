@@ -1,0 +1,60 @@
+﻿Build started 7/21/2015 3:11:03 PM.
+     1>Project "C:\Users\Moses\Documents\_school\SUMMER2015\CG Programming II\WEEK 01\cg_programming_windowsMaartmannMoe\cg_programming_windows.vcxproj" on node 2 (Build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\cg_programming_windows.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /Iglm\0.9.5.4\include /Iglfw\include /Iglew\include /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Ball.cpp Cube.cpp main.cpp Matrix.cpp Object.cpp Paddle.cpp Plane.cpp SYSTEM.UserInput.cpp World.cpp
+         World.cpp
+     1>c:\users\moses\documents\_school\summer2015\cg programming ii\week 01\cg_programming_windowsmaartmannmoe\world.cpp(107): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(110) : see declaration of 'strcpy'
+     1>c:\users\moses\documents\_school\summer2015\cg programming ii\week 01\cg_programming_windowsmaartmannmoe\world.cpp(178): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\moses\documents\_school\summer2015\cg programming ii\week 01\cg_programming_windowsmaartmannmoe\world.cpp(179): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+         SYSTEM.UserInput.cpp
+         Plane.cpp
+         Paddle.cpp
+         Object.cpp
+     1>c:\users\moses\documents\_school\summer2015\cg programming ii\week 01\cg_programming_windowsmaartmannmoe\object.cpp(74): warning C4244: '=' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>c:\users\moses\documents\_school\summer2015\cg programming ii\week 01\cg_programming_windowsmaartmannmoe\object.cpp(75): warning C4244: '=' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>c:\users\moses\documents\_school\summer2015\cg programming ii\week 01\cg_programming_windowsmaartmannmoe\object.cpp(76): warning C4244: '=' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>c:\users\moses\documents\_school\summer2015\cg programming ii\week 01\cg_programming_windowsmaartmannmoe\object.cpp(78): warning C4244: '=' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>c:\users\moses\documents\_school\summer2015\cg programming ii\week 01\cg_programming_windowsmaartmannmoe\object.cpp(79): warning C4244: '=' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>c:\users\moses\documents\_school\summer2015\cg programming ii\week 01\cg_programming_windowsmaartmannmoe\object.cpp(80): warning C4244: '=' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>c:\users\moses\documents\_school\summer2015\cg programming ii\week 01\cg_programming_windowsmaartmannmoe\object.cpp(92): warning C4244: '=' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\moses\documents\_school\summer2015\cg programming ii\week 01\cg_programming_windowsmaartmannmoe\object.cpp(93): warning C4244: '=' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>c:\users\moses\documents\_school\summer2015\cg programming ii\week 01\cg_programming_windowsmaartmannmoe\object.cpp(94): warning C4244: '=' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\moses\documents\_school\summer2015\cg programming ii\week 01\cg_programming_windowsmaartmannmoe\object.cpp(96): warning C4244: '=' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>c:\users\moses\documents\_school\summer2015\cg programming ii\week 01\cg_programming_windowsmaartmannmoe\object.cpp(97): warning C4244: '=' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\moses\documents\_school\summer2015\cg programming ii\week 01\cg_programming_windowsmaartmannmoe\object.cpp(98): warning C4244: '=' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>c:\users\moses\documents\_school\summer2015\cg programming ii\week 01\cg_programming_windowsmaartmannmoe\object.cpp(133): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\moses\documents\_school\summer2015\cg programming ii\week 01\cg_programming_windowsmaartmannmoe\object.cpp(134): warning C4244: '=' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>c:\users\moses\documents\_school\summer2015\cg programming ii\week 01\cg_programming_windowsmaartmannmoe\object.cpp(135): warning C4244: '=' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>c:\users\moses\documents\_school\summer2015\cg programming ii\week 01\cg_programming_windowsmaartmannmoe\object.cpp(138): warning C4244: '=' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>c:\users\moses\documents\_school\summer2015\cg programming ii\week 01\cg_programming_windowsmaartmannmoe\object.cpp(139): warning C4244: '=' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>c:\users\moses\documents\_school\summer2015\cg programming ii\week 01\cg_programming_windowsmaartmannmoe\object.cpp(206): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(218) : see declaration of 'fopen'
+         Matrix.cpp
+         main.cpp
+     1>c:\users\moses\documents\_school\summer2015\cg programming ii\week 01\cg_programming_windowsmaartmannmoe\main.cpp(176): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\moses\documents\_school\summer2015\cg programming ii\week 01\cg_programming_windowsmaartmannmoe\main.cpp(177): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+         Cube.cpp
+         Ball.cpp
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Moses\Documents\_school\SUMMER2015\CG Programming II\WEEK 01\cg_programming_windowsMaartmannMoe\Debug\cg_programming_windows.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\Moses\Documents\_school\SUMMER2015\CG Programming II\WEEK 01\cg_programming_windowsMaartmannMoe\glew\lib" /LIBPATH:"C:\Users\Moses\Documents\_school\SUMMER2015\CG Programming II\WEEK 01\cg_programming_windowsMaartmannMoe\glfw\lib" glfw3.lib glew32.lib glew32s.lib opengl32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Moses\Documents\_school\SUMMER2015\CG Programming II\WEEK 01\cg_programming_windowsMaartmannMoe\Debug\cg_programming_windows.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Moses\Documents\_school\SUMMER2015\CG Programming II\WEEK 01\cg_programming_windowsMaartmannMoe\Debug\cg_programming_windows.lib" /MACHINE:X86 Debug\Ball.obj
+         Debug\Cube.obj
+         Debug\main.obj
+         Debug\Matrix.obj
+         Debug\Object.obj
+         Debug\Paddle.obj
+         Debug\Plane.obj
+         Debug\SYSTEM.UserInput.obj
+         Debug\World.obj
+         cg_programming_windows.vcxproj -> C:\Users\Moses\Documents\_school\SUMMER2015\CG Programming II\WEEK 01\cg_programming_windowsMaartmannMoe\Debug\cg_programming_windows.exe
+       FinalizeBuildStatus:
+         Deleting file "Debug\cg_programming_windows.unsuccessfulbuild".
+         Touching "Debug\cg_programming_windows.lastbuildstate".
+     1>Done Building Project "C:\Users\Moses\Documents\_school\SUMMER2015\CG Programming II\WEEK 01\cg_programming_windowsMaartmannMoe\cg_programming_windows.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:08.64
