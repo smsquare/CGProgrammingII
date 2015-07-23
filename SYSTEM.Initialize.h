@@ -8,4 +8,5 @@
 namespace INITIALIZE {
 	int WindowFailed();
 	int GlewFailed();
+	void Application();
 }

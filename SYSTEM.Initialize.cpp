@@ -50,4 +50,13 @@ namespace INITIALIZE {
 
 		return EXIT_WITH_SUCCESS;
 	}
+
+	void Application() {
+		GLuint vertexArrayID = 0;
+		glGenVertexArrays(1, &vertexArrayID);
+		glBindVertexArray(vertexArrayID);
+
+		// Create and compile glsl program from shaders...
+
+	}
 }

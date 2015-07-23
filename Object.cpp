@@ -317,11 +317,8 @@ mat4 Object::Render(){
 	mat4 scaleMatrix = glm::scale(identityMatrix, vec3(scale));
 	mat4 translateMatrix = translate(identityMatrix, position);
 	mat4 rotationMatrix = glm::rotate(identityMatrix, this->rotAngle, this->rotation);
+
 	mat4 modelMatrix = translateMatrix * rotationMatrix * scaleMatrix;
-		//glm::scale(translateMatrix, scale);
 
 	return modelMatrix;
 }
-
-
-//static mat4 Render(GLuint vertexBuffer, const vec3& position, const vec3& scale);

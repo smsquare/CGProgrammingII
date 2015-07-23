@@ -141,13 +141,6 @@ int main(){
 
 	World world;
 
-	////////////////////////////////////////////////////////////
-	//std::vector<glm::vec3> tmp_out_verts;
-	//std::vector<glm::vec2> tmp_out_uvs;
-	//std::vector<glm::vec3> tmp_out_normals;
-	//LOAD_OBJ::LoadObj("testOBJ.txt", tmp_out_verts, tmp_out_uvs, tmp_out_normals);
-	////////////////////////////////////////////////////////////
-
 	//Comment this in to render lines...
 	// 0 commented out, 1 not commented out
 	#if 0
