@@ -1,46 +1,13 @@
+// main.cpp
+//////////////////////////////////////////////////////////////////////////
+
 #include "Application.h"
+#include "SYSTEM.Initialize.h"
 #include "World.h"
-#include "SYSTEM.LoadOBJ.h"
+//#include "SYSTEM.LoadOBJ.h"
 #pragma once
 
 GLFWwindow* window = NULL;
-
-void window_refresh_callback(GLFWwindow* window){
-	//world.Render(camera);
-	glfwSwapBuffers(window);
-}
-
-int InitWindowFailed(){
-	if(glfwInit() == GLFW_FAIL){
-		fprintf(stderr, "Failed to initialize GLFW\n");
-		return EXIT_WITH_ERROR;
-	}
-
-	glfwWindowHint(GLFW_SAMPLES, ANTIALIASING);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, OPEN_GL_VERSION);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, OPEN_GL_VERSION);
-	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); //Gets working on mac...
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); //We don't want the old open gl...
-
-	window = glfwCreateWindow(SCREEN_WIDTH, SCREEN_HEIGHT, APP_NAME, NULL, NULL);
-	
-	if(window == NULL){
-		fprintf(stderr, "Failed to create/open GLFW window.\n");
-		glfwTerminate();
-		return EXIT_WITH_ERROR;
-	}
-
-	//Initialize GLEW.
-    glfwMakeContextCurrent(window);
-    
-    //Ensure we can capture the escape key being pressed below.
-    glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
-	
-	//glfwSetWindowFocusCallback(window, windowFocusCallback);
-	glfwSetWindowRefreshCallback(window, window_refresh_callback);
-
-	return EXIT_WITH_SUCCESS;
-}
 
 GLuint LoadShaders(const char *vertex_file_path, const char *fragment_file_path){
 	GLuint vertexShaderID = glCreateShader(GL_VERTEX_SHADER);
@@ -127,16 +94,6 @@ GLuint LoadShaders(const char *vertex_file_path, const char *fragment_file_path)
 	return programID;
 }
 
-int InitGlewFailed(){
-	glewExperimental = true; //Has to do with core profile.
-	if(glewInit() != GLEW_OK){
-		fprintf(stderr, "Failed to initialize GLEW\n");
-		return EXIT_WITH_ERROR;
-	}
-
-	return EXIT_WITH_SUCCESS;
-}
-
 double getDeltaTime(){
 	static double lastTime = glfwGetTime();
 
@@ -149,7 +106,7 @@ double getDeltaTime(){
 }
 
 int main(){
-	if(InitWindowFailed() | InitGlewFailed()){
+	if(INITIALIZE::WindowFailed() | INITIALIZE::GlewFailed()) {
 		return EXIT_WITH_ERROR;
 	}
 

@@ -108,6 +108,7 @@
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Paddle.cpp" />
     <ClCompile Include="Plane.cpp" />
+    <ClCompile Include="SYSTEM.Initialize.cpp" />
     <ClCompile Include="SYSTEM.LoadOBJ.cpp" />
     <ClCompile Include="SYSTEM.Mesh.cpp" />
     <ClCompile Include="SYSTEM.UserInput.cpp" />
@@ -121,6 +122,7 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="Paddle.h" />
     <ClInclude Include="Plane.h" />
+    <ClInclude Include="SYSTEM.Initialize.h" />
     <ClInclude Include="SYSTEM.LoadOBJ.h" />
     <ClInclude Include="SYSTEM.Mesh.h" />
     <ClInclude Include="SYSTEM.UserInput.h" />
