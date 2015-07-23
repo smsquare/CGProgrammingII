@@ -1,6 +1,6 @@
 #include "Application.h"
 #include "World.h"
-
+#include "SYSTEM.LoadOBJ.h"
 #pragma once
 
 GLFWwindow* window = NULL;
@@ -161,6 +161,7 @@ int main(){
 	GLuint programID = LoadShaders("BasicVertexShader.vertexshader", "BasicFragmentShader.fragmentshader");
 	glUseProgram(programID);
 
+	//TODO: Create a function to initialize the camera.
 	Camera camera;
 	camera.x = 0;
 	camera.y = 0;
@@ -169,7 +170,6 @@ int main(){
 	float aspectRatio = SCREEN_WIDTH/(float)SCREEN_HEIGHT;
 	camera.MVPMatrixID = glGetUniformLocation(programID, "MVP");
 	camera.projectionMatrix = perspective(FIELD_OF_VIEW, aspectRatio, Z_NEAR, Z_FAR);
-
 
 	float radian = glm::radians(camera.angle);
 	//TODO: Fix hard-coded (0.0) origin and radius (5.0)
@@ -184,9 +184,16 @@ int main(){
 
 	World world;
 
+	////////////////////////////////////////////////////////////
+	//std::vector<glm::vec3> tmp_out_verts;
+	//std::vector<glm::vec2> tmp_out_uvs;
+	//std::vector<glm::vec3> tmp_out_normals;
+	//LOAD_OBJ::LoadObj("testOBJ.txt", tmp_out_verts, tmp_out_uvs, tmp_out_normals);
+	////////////////////////////////////////////////////////////
+
 	//Comment this in to render lines...
 	// 0 commented out, 1 not commented out
-	#if 1
+	#if 0
 		glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
 	#endif
 	do{

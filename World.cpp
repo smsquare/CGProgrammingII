@@ -30,11 +30,15 @@ static void FillBuffer(u8 *src, u8 *dest, u16 &index, u16 const &length){
 
 //TODO: Add functionality later...
 World::World(){
-	cubeLarge = new Cube();
+	//cubeLarge = new Cube();
+
+
+	cubeLarge = new Cube("testOBJ.txt");
 	cubeLarge->SetPosition(vec3(0.0f,0.0f,0.0f));
 	cubeLarge->SetRotationSpeed(0.5f);
+	cubeLarge->SetScale(vec3(0.5f));
 
-	cubeReference = new Cube();
+	cubeReference = new Cube("testOBJ.txt");
 	cubeReference->SetPosition(vec3(0.0f,0.0f,0.0f));
 	cubeReference->SetScale(vec3(0.25f));
 	//cube->SetPosition(vec3(0.0f, 0.0f, 0.0f));

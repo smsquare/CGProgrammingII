@@ -108,6 +108,8 @@
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Paddle.cpp" />
     <ClCompile Include="Plane.cpp" />
+    <ClCompile Include="SYSTEM.LoadOBJ.cpp" />
+    <ClCompile Include="SYSTEM.Mesh.cpp" />
     <ClCompile Include="SYSTEM.UserInput.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
@@ -119,6 +121,8 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="Paddle.h" />
     <ClInclude Include="Plane.h" />
+    <ClInclude Include="SYSTEM.LoadOBJ.h" />
+    <ClInclude Include="SYSTEM.Mesh.h" />
     <ClInclude Include="SYSTEM.UserInput.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>
@@ -127,6 +131,9 @@
     <None Include="BasicVertexShader.vertexshader" />
     <None Include="TexturedFragmentShader.fragmentshader" />
     <None Include="TexturedVertexShader.vertexshader" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="testOBJ.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
