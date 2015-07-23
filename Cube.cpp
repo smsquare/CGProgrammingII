@@ -9,6 +9,13 @@ Cube::Cube() : Object() {
 	BuildCube();
 }
 
+Cube::Cube(const char* a_meshPath) : Object() {
+	rotSpeed = 0.0;
+	rotation = vec3(0.0f, 1.0f, 0.0f);
+	this->mesh.LoadOBJ(a_meshPath);
+	this->LoadOBJTriangles();
+}
+
 Cube::~Cube() {
 
 }

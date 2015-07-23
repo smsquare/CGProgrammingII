@@ -1,46 +1,13 @@
-#include "Application.h"
-#include "World.h"
+// main.cpp
+//////////////////////////////////////////////////////////////////////////
 
+#include "Application.h"
+#include "SYSTEM.Initialize.h"
+#include "World.h"
+//#include "SYSTEM.LoadOBJ.h"
 #pragma once
 
 GLFWwindow* window = NULL;
-
-void window_refresh_callback(GLFWwindow* window){
-	//world.Render(camera);
-	glfwSwapBuffers(window);
-}
-
-int InitWindowFailed(){
-	if(glfwInit() == GLFW_FAIL){
-		fprintf(stderr, "Failed to initialize GLFW\n");
-		return EXIT_WITH_ERROR;
-	}
-
-	glfwWindowHint(GLFW_SAMPLES, ANTIALIASING);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, OPEN_GL_VERSION);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, OPEN_GL_VERSION);
-	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); //Gets working on mac...
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); //We don't want the old open gl...
-
-	window = glfwCreateWindow(SCREEN_WIDTH, SCREEN_HEIGHT, APP_NAME, NULL, NULL);
-	
-	if(window == NULL){
-		fprintf(stderr, "Failed to create/open GLFW window.\n");
-		glfwTerminate();
-		return EXIT_WITH_ERROR;
-	}
-
-	//Initialize GLEW.
-    glfwMakeContextCurrent(window);
-    
-    //Ensure we can capture the escape key being pressed below.
-    glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
-	
-	//glfwSetWindowFocusCallback(window, windowFocusCallback);
-	glfwSetWindowRefreshCallback(window, window_refresh_callback);
-
-	return EXIT_WITH_SUCCESS;
-}
 
 GLuint LoadShaders(const char *vertex_file_path, const char *fragment_file_path){
 	GLuint vertexShaderID = glCreateShader(GL_VERTEX_SHADER);
@@ -127,16 +94,6 @@ GLuint LoadShaders(const char *vertex_file_path, const char *fragment_file_path)
 	return programID;
 }
 
-int InitGlewFailed(){
-	glewExperimental = true; //Has to do with core profile.
-	if(glewInit() != GLEW_OK){
-		fprintf(stderr, "Failed to initialize GLEW\n");
-		return EXIT_WITH_ERROR;
-	}
-
-	return EXIT_WITH_SUCCESS;
-}
-
 double getDeltaTime(){
 	static double lastTime = glfwGetTime();
 
@@ -149,7 +106,7 @@ double getDeltaTime(){
 }
 
 int main(){
-	if(InitWindowFailed() | InitGlewFailed()){
+	if(INITIALIZE::WindowFailed() | INITIALIZE::GlewFailed()) {
 		return EXIT_WITH_ERROR;
 	}
 
@@ -161,6 +118,7 @@ int main(){
 	GLuint programID = LoadShaders("BasicVertexShader.vertexshader", "BasicFragmentShader.fragmentshader");
 	glUseProgram(programID);
 
+	//TODO: Create a function to initialize the camera.
 	Camera camera;
 	camera.x = 0;
 	camera.y = 0;
@@ -169,7 +127,6 @@ int main(){
 	float aspectRatio = SCREEN_WIDTH/(float)SCREEN_HEIGHT;
 	camera.MVPMatrixID = glGetUniformLocation(programID, "MVP");
 	camera.projectionMatrix = perspective(FIELD_OF_VIEW, aspectRatio, Z_NEAR, Z_FAR);
-
 
 	float radian = glm::radians(camera.angle);
 	//TODO: Fix hard-coded (0.0) origin and radius (5.0)
@@ -184,9 +141,16 @@ int main(){
 
 	World world;
 
+	////////////////////////////////////////////////////////////
+	//std::vector<glm::vec3> tmp_out_verts;
+	//std::vector<glm::vec2> tmp_out_uvs;
+	//std::vector<glm::vec3> tmp_out_normals;
+	//LOAD_OBJ::LoadObj("testOBJ.txt", tmp_out_verts, tmp_out_uvs, tmp_out_normals);
+	////////////////////////////////////////////////////////////
+
 	//Comment this in to render lines...
 	// 0 commented out, 1 not commented out
-	#if 1
+	#if 0
 		glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
 	#endif
 	do{

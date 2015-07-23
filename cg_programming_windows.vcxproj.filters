@@ -42,6 +42,15 @@
     <ClCompile Include="SYSTEM.UserInput.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SYSTEM.LoadOBJ.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SYSTEM.Mesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SYSTEM.Initialize.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -71,6 +80,15 @@
     <ClInclude Include="SYSTEM.UserInput.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SYSTEM.LoadOBJ.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SYSTEM.Mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SYSTEM.Initialize.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="BasicFragmentShader.fragmentshader">
@@ -85,5 +103,8 @@
     <None Include="TexturedVertexShader.vertexshader">
       <Filter>Resource Files</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="testOBJ.txt" />
   </ItemGroup>
 </Project>

@@ -7,7 +7,7 @@ Object::Object(){
 	vertexBufferID = 0;
 	SetPosition(vec3(0));
 	SetScale(vec3(1));
-	numIndices = 6;
+	numIndices = 0;
 	numUVs = 0;
 	textureID = 0;
 	rotSpeed = 0;
@@ -180,6 +180,20 @@ void Object::LoadTriangles(GLfloat *a_vertices, GLfloat *a_uvs){
 	glBufferData(GL_ARRAY_BUFFER, numUVs * 2 * sizeof(GLfloat), a_uvs, GL_STATIC_DRAW);
 }
 
+void Object::LoadOBJTriangles() {
+	std::vector<glm::vec3> verts;
+	this->mesh.GetVertices(verts);
+	glGenBuffers(1, &vertexBufferID);
+	glBindBuffer(GL_ARRAY_BUFFER, vertexBufferID);
+	glBufferData(GL_ARRAY_BUFFER, verts.size() * sizeof(glm::vec3), &verts[0], GL_STATIC_DRAW);
+
+	std::vector<glm::vec2> uvs;
+	this->mesh.GetUVs(uvs);
+	glGenBuffers(1, &uvID);
+	glBindBuffer(GL_ARRAY_BUFFER, uvID);
+	glBufferData(GL_ARRAY_BUFFER, uvs.size() * sizeof(glm::vec2), &uvs[0], GL_STATIC_DRAW);
+}
+
 void Object::SaveObjectState(char *a_message){
 	if(objectState == NULL)
 		objectState = (Object*)malloc(sizeof(*this));
@@ -257,6 +271,11 @@ GLuint Object::LoadBMP(const char * a_imagepath){
 	return textureID;
 }
 
+bool Object::LoadMesh(const char* a_meshPath) {
+	bool result = this->mesh.LoadOBJ(a_meshPath);
+	return (result) ? true : false;
+}
+
 mat4 Object::Render(){
 	glEnableVertexAttribArray(0);
 	glBindBuffer(GL_ARRAY_BUFFER, vertexBufferID);
@@ -283,6 +302,7 @@ mat4 Object::Render(){
 		(void*)0	//Array buffer offset...
 	);
 
+	numIndices = this->mesh.GetNumVertexIndices();
 	glDrawArrays(renderMode, 0, numIndices);	//GL_TRIANGLE_STRIP or GL_TRIANGLES
 
 	glDisableVertexAttribArray(0);
@@ -302,5 +322,6 @@ mat4 Object::Render(){
 
 	return modelMatrix;
 }
+
 
 //static mat4 Render(GLuint vertexBuffer, const vec3& position, const vec3& scale);
