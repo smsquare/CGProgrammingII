@@ -1,6 +1,7 @@
-#include "Application.h"
 
 #pragma once
+#include "Application.h"
+#include "SYSTEM.Mesh.h"
 
 class Object{
 
@@ -26,6 +27,7 @@ class Object{
 		void SaveObjectState(char *a_message = "Saved Object State");
 		void LoadObjectState(char *a_message = "Loaded Object State");
 		GLuint LoadBMP(const char * a_imagepath);
+		bool LoadMesh(const char* a_meshPath);
 
 	protected:
 		void BuildTriangles(const GLuint& a_perRow, const GLuint& a_perColumn);
@@ -37,8 +39,10 @@ class Object{
 
 	protected:
 		void LoadTriangles(GLfloat *a_vertices, GLfloat *a_uvs);
+		void LoadOBJTriangles();
 		float leftX, rightX, topY, bottomY;
 		mat4 Render();
 		GLuint textureID, uvID;
 		GLuint numIndices, numUVs, vertexBufferID, renderMode;
+		Mesh mesh;
 };
