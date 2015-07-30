@@ -20,9 +20,9 @@ bool Mesh::LoadOBJ(const char* a_path) {
 
 	bool result = LOAD_OBJ::LoadObj(a_path, tmp_out_verts, tmp_out_uvs, tmp_out_normals);
 
-	SetVertices(tmp_out_verts);
-	SetUVs(tmp_out_uvs);
-	SetNormals(tmp_out_normals);
+	Mesh::SetVertices(tmp_out_verts);
+	Mesh::SetUVs(tmp_out_uvs);
+	Mesh::SetNormals(tmp_out_normals);
 
 	return (result) ? true : false;
 }

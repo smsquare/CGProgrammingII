@@ -47,5 +47,10 @@ struct Camera{
 	GLuint MVPMatrixID;
 	mat4 projectionMatrix, viewMatrix, MVPMatrix;
 	float x, y, z;
+	glm::vec3 position;
 	float angle;
+	float horAngle, vertAngle;
+	float initFoV;
+	float speed;
+	float mouseSpeed;
 };

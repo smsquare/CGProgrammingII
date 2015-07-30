@@ -142,7 +142,6 @@ void Object::BuildTriangleStrip(const GLuint& a_perRow, const GLuint& a_perColum
 			x = -1; --y;
 		}
 	}
-
 	/*GLfloat *vertices = new GLfloat[numVertices];
 	vertices[0] = 0.0f; vertices[1] = 1.0f; vertices[2] = 0.0f;
 	vertices[3] = 0.0f; vertices[4] = 0.0f; vertices[5] = 0.0f;
@@ -163,11 +162,7 @@ void Object::BuildTriangleStrip(const GLuint& a_perRow, const GLuint& a_perColum
 }
 
 void Object::BuildCube() {
-	
-
 	this->renderMode = GL_TRIANGLES;
-
-	
 }
 
 void Object::LoadTriangles(GLfloat *a_vertices, GLfloat *a_uvs){

@@ -30,7 +30,7 @@ class World{
 		
 	private:
 		Plane* plane;
-		Cube* cubeLarge;
+		Cube* bunnyMesh;
 		Cube* cubeReference;
 		u8* levelBuffer;
 		u8* textureBuffer;

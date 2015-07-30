@@ -32,14 +32,14 @@ static void FillBuffer(u8 *src, u8 *dest, u16 &index, u16 const &length){
 World::World(){
 	//cubeLarge = new Cube();
 
+	bunnyMesh = new Cube("bunny.obj");
+	bunnyMesh->SetPosition(vec3(0.0f,0.0f,0.0f));
+	//bunnyMesh->SetRotationSpeed(0.5f);
+	bunnyMesh->SetScale(vec3(0.5f));
 
-	cubeLarge = new Cube("testOBJ.txt");
-	cubeLarge->SetPosition(vec3(0.0f,0.0f,0.0f));
-	cubeLarge->SetRotationSpeed(0.5f);
-	cubeLarge->SetScale(vec3(0.5f));
-
-	cubeReference = new Cube("testOBJ.txt");
+	cubeReference = new Cube("testOBJ.obj");
 	cubeReference->SetPosition(vec3(0.0f,0.0f,0.0f));
+	//cubeReference->SetRotationSpeed(-0.5f);
 	cubeReference->SetScale(vec3(0.25f));
 	//cube->SetPosition(vec3(0.0f, 0.0f, 0.0f));
 	//plane = new Plane(1, 1);
@@ -147,20 +147,61 @@ unsigned char World::FindChar(const char* buffer, const char& c){
 World::~World(){
 	//delete plane;
 	//plane = NULL;
-	delete cubeLarge;
-	cubeLarge = NULL;
+	delete bunnyMesh;
+	bunnyMesh = NULL;
 
 	delete cubeReference;
 	cubeReference = NULL;
 }
 
-void World::Update(const float& deltaTime){
-	cubeLarge->Update(deltaTime);
+void World::Update(const float& deltaTime) {
+	cubeReference->Update(deltaTime);
+	bunnyMesh->Update(deltaTime);
+	
 	//plane->Update(deltaTime);
 }
 
 void World::UpdateCamera(Camera& camera, const float& deltaTime) {
-	// TODO: Update the camera's position based on user input
+	// WEEK 03: Get mouse position
+	double xpos, ypos;
+	glfwGetCursorPos(window, &xpos, &ypos);
+
+	camera.horAngle += camera.mouseSpeed * deltaTime * float(SCREEN_WIDTH/2 - xpos);
+	camera.vertAngle += camera.mouseSpeed * deltaTime * float(SCREEN_HEIGHT/2 - ypos);
+
+	// Direction: Spherical coords to cartesian coords conversion
+	glm::vec3 direction(
+		cos(camera.vertAngle) * sin(camera.horAngle),
+		sin(camera.vertAngle),
+		cos(camera.vertAngle) * cos(camera.horAngle)
+	);
+
+	// Right vector
+	glm::vec3 right = glm::vec3(
+		sin(camera.horAngle - 3.14f/2.0f),
+		0,
+		cos(camera.horAngle - 3.14f/2.0f)
+	);
+
+	// Up vector
+	glm::vec3 up = glm::cross(right, direction);
+
+	if (glfwGetKey(window, GLFW_KEY_UP)==GLFW_PRESS) {
+		camera.position += direction * deltaTime * camera.speed;
+	}	
+	
+	if (glfwGetKey(window, GLFW_KEY_DOWN)==GLFW_PRESS) {
+		camera.position -= direction * deltaTime * camera.speed;
+	}	
+
+	if (glfwGetKey(window, GLFW_KEY_RIGHT)==GLFW_PRESS) {
+		camera.position += right * deltaTime * camera.speed;
+	}	
+	
+	if (glfwGetKey(window, GLFW_KEY_LEFT)==GLFW_PRESS) {
+		camera.position -= right * deltaTime * camera.speed;
+	}
+
 	if (USERINPUT::IsKeyPressed(USERINPUT::A) || USERINPUT::IsKeyPressed(USERINPUT::D)) {
 		if(USERINPUT::IsKeyPressed(USERINPUT::A)) {
 			camera.angle += 50 * deltaTime;
@@ -186,15 +227,28 @@ void World::UpdateCamera(Camera& camera, const float& deltaTime) {
 		camera.z = z;
 	}
 
+
+	// old
+	//camera.viewMatrix = glm::lookAt(
+	//	vec3(camera.x, camera.y, camera.z),
+	//	vec3(0,0,0),
+	//	vec3(0,1,0)
+	//	);
+
+	// new
 	camera.viewMatrix = glm::lookAt(
-		vec3(camera.x, camera.y, camera.z),
-		vec3(0,0,0),
-		vec3(0,1,0)
-		);
+		camera.position,
+		camera.position+direction,
+		up
+	);
+
+	// Reset mouse position for next frame.
+	glfwSetCursorPos(window, SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
 }
 
 void World::Render(const Camera& camera){
-	cubeLarge->Render(camera);
 	cubeReference->Render(camera);
+	bunnyMesh->Render(camera);
+	
 	//plane->Render(camera);	
 }

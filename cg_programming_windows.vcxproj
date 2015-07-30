@@ -129,11 +129,13 @@
   <ItemGroup>
     <None Include="BasicFragmentShader.fragmentshader" />
     <None Include="BasicVertexShader.vertexshader" />
+    <None Include="FlattenedVertexShader.vertexshader" />
     <None Include="TexturedFragmentShader.fragmentshader" />
     <None Include="TexturedVertexShader.vertexshader" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="testOBJ.txt" />
+    <Text Include="Resources\bunny.obj" />
+    <Text Include="testOBJ.obj" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

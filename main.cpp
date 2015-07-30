@@ -166,9 +166,19 @@ int main(){
 	camera.x = 0;
 	camera.y = 0;
 	camera.z = 3;
+	camera.position = glm::vec3(camera.x, camera.y, camera.z);
 	camera.angle = 0;
+
+	// WEEK 03:
+	camera.horAngle = 3.14f; // toward -Z
+	camera.vertAngle = 0.0f; // 0, look at the horizon
+	camera.initFoV = 45.0f;	 // Initial Field of View
+	camera.speed = 3.0f;	 // 3 units / second
+	camera.mouseSpeed = 0.05f;
+
 	float aspectRatio = SCREEN_WIDTH/(float)SCREEN_HEIGHT;
 	camera.MVPMatrixID = glGetUniformLocation(programID, "MVP");
+	GLuint uShaderTime = glGetUniformLocation(programID, "time");
 	camera.projectionMatrix = perspective(FIELD_OF_VIEW, aspectRatio, Z_NEAR, Z_FAR);
 
 	float radian = glm::radians(camera.angle);
@@ -184,23 +194,20 @@ int main(){
 
 	World world;
 
-	////////////////////////////////////////////////////////////
-	//std::vector<glm::vec3> tmp_out_verts;
-	//std::vector<glm::vec2> tmp_out_uvs;
-	//std::vector<glm::vec3> tmp_out_normals;
-	//LOAD_OBJ::LoadObj("testOBJ.txt", tmp_out_verts, tmp_out_uvs, tmp_out_normals);
-	////////////////////////////////////////////////////////////
-
 	//Comment this in to render lines...
 	// 0 commented out, 1 not commented out
-	#if 0
+	#if 1
 		glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
 	#endif
+	float time = 0.0f;
 	do{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		//Getting delta time...
 		float deltaTime = (float)getDeltaTime();
+		
+		glUniform1fARB(uShaderTime, time);
+		time += 0.5;
 
 		world.UpdateCamera(camera, deltaTime);
 

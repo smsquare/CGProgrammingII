@@ -1,0 +1,15 @@
+#version 330 core
+
+layout(location = 0)
+in vec3 model_space_pos;
+
+uniform mat4 MVP;
+uniform float time;
+
+void main(){
+	vec4 v = vec4(model_space_pos, 1);
+	v.x = sin(2.5*v.x + time*0.01) * 0.25;
+	v.z = sin(2.5*v.x + time*0.01) * 0.25;
+
+	gl_Position = MVP * v;
+}

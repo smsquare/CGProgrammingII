@@ -97,8 +97,10 @@
     <None Include="TexturedVertexShader.vertexshader">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="FlattenedVertexShader.vertexshader" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="testOBJ.txt" />
+    <Text Include="testOBJ.obj" />
+    <Text Include="Resources\bunny.obj" />
   </ItemGroup>
 </Project>
